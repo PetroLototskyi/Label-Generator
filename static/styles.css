@@ -1,0 +1,114 @@
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: xx-large;
+}
+
+/* Colors for brand */
+nav .navbar-brand .blue
+{
+    /* color: #537fbe; */
+    color:  #8625FE;
+}
+nav .navbar-brand .red
+{
+    /* color: #ea433b; */
+    color: #eb5951;
+    /* color: #cc41ff; */
+    /* color: #ff574c; */
+}
+nav .navbar-brand .yellow
+{
+    /* color: #f5b82e; */
+    /* color: #cc41ff; */
+    color: #ffb20a;
+
+}
+nav .navbar-brand .green
+{
+    /* color: #2e944b; */
+    color: #05bbaa;
+}
+
+.inventory-text {
+    margin-left: 20px; /* Adjust the margin as needed for the desired spacing */
+    margin-right: 10px; /* Adjust the margin as needed for the desired spacing */
+    letter-spacing: 4px; /* Adjust the letter-spacing value as needed for the desired spacing */
+  }
+  .custom-navbar {
+    /* Replace with your desired color */
+    /* background-color: #F6F1FF; */
+    background-color: #534293;
+}
+
+    #navbar .nav-link {
+    color: #05bbaa;
+}
+
+    .btn-primary {
+    color: #ffb20a;
+    background-color: #534293;
+}
+    .btn-primary:hover {
+    background-color: #05bbaa; /* Change this to your desired hover background color */
+    color: #534293; /* Change this to your desired hover text color */
+}
+    h2 {
+    color:  #534293; /* Change this to your desired text color */
+}
+
+    body {
+        /* background-color: #F1F1F8; */
+        background-color: #F3F9FD;
+}
+
+/* Add some custom styling to set max-height and overflow-y */
+.table-container {
+    max-height: 400px;  /* Set your preferred max height */
+    overflow-y: auto;  /* Add a vertical scrollbar if needed */
+}
+
+.selected {
+    background-color: #ffb20a;/* You can customize the background color */
+    /* #ffb20a; */
+    /* #05bbaa */
+    /* #eb5951 */
+}
+
+
+
+/* _______________________________________________ */
+
+.ui-widget li:nth-child(n+10) {
+    display: none;
+}
+
+
+.ui-autocomplete {
+    position: absolute;
+    z-index: 99999 !important;
+    cursor: default;
+    padding: 0;
+    margin-top: 2px;
+    list-style: none;
+    background-color: #ffffff;
+    border: 1px solid #ccc -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.ui-autocomplete>li {
+    padding: 3px 20px;
+}
+
+.ui-autocomplete>li.ui-state-focus {
+    background-color: #DDD;
+}
+
+.ui-helper-hidden-accessible {
+    display: none;
+}
+
