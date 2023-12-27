@@ -5,35 +5,25 @@
 {% endblock %}
 
 {% block main %}
-
 <script>
+$(function() {
 
-    $(function() {
+    // Generate array from pythone list of lists
+    var item_bin_array = [
+        {% for entry in bin_list %}
+        {label:"{{ entry[0] }}", idx:"{{ entry[1] }}" },
+        {% endfor %}
+    ];
 
-        array = [{label:"First", idx:"1"},
-                 {label:"Second", idx:"2"},
-                 {label:"Third", idx:"3"}];
-
-        var item_bin_array = [
-            {% for entry in bin_array %}
-            {label:"{{ entry[0] }}", idx:"{{ entry[1] }}" },
-            {% endfor %}
-        ];
-
-
-
-        $( "#part_number" ).autocomplete({
-            source: item_bin_array,
-            select: function(event, ui) { $('#location').val(ui.item.idx) ; }
-        });
+    // Autocompleate form with filing out location field
+    $( "#part_number" ).autocomplete({
+        source: item_bin_array,
+        select: function(event, ui) { $('#location').val(ui.item.idx) ; }
     });
-
-   </script>
-
-
+});
+</script>
 
 <h2>Generate Inventory Label</h2>
-
 
 
 <div class="container mt-4">

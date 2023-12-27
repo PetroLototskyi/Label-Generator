@@ -35,20 +35,23 @@ def after_request(response):
 @login_required
 def index():
 
-    bin_array = read_bin_file()
+    # Create list of lists with item# and location
+    bin_list = read_bin_file()
 
+    # Retrive today day
     today = date.today()
 
-    return render_template('index.html', bin_array=bin_array, today=today)
+    return render_template('index.html', bin_list=bin_list, today=today)
 
 
-
+# Generete PDF page
 @app.route('/generate-label', methods=['GET', 'POST'])
 def generate_label():
     label_dict = {}
      # Retrieve user ID from the session
     user_id = session["user_id" ]
 
+    # Handle POST request
     if request.method == 'POST':
         # Retrieve user input from the form
         part_number = request.form.get("part_number")
@@ -57,10 +60,9 @@ def generate_label():
         date_open = request.form.get("date_open")
         lot = request.form.get("lot")
         location = request.form.get("location")
-        # time = request.form.get("time")
 
-        # Validate and store the user input
-        if part_number and revision: # and publication_year:
+        # Validate does part number provided and store the user input
+        if part_number:
             label_dict = {
                 'part_number': part_number,
                 'revision': revision,
@@ -73,26 +75,15 @@ def generate_label():
             # Get the current timestamp
             current_timestamp = datetime.now()
 
-            # Adjust the timestamp by subtracting 5 hours
-            adjusted_timestamp = current_timestamp - timedelta(hours=0)
-
-
-             # Insert the information into the operations table
+            # Insert the information into the operations table
             db.execute( "INSERT INTO label (user_id, part_number, revision, quantity, date, lot, location, time) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-                   user_id, part_number, revision, qty, date_open, lot, location, adjusted_timestamp)
+                   user_id, part_number, revision, qty, date_open, lot, location, current_timestamp)
 
         pdf_file = generate_pdf_file(label_dict)
         # Create a response with the PDF file
         response = make_response(send_file(pdf_file, as_attachment=False, download_name='label.pdf'))
 
-        # Add the 'Content-Disposition' header to force opening in a new tab
-        response.headers["Content-Disposition"] = "inline; filename=label.pdf"
         return response
-
-
-    # pdf_file = generate_pdf_file(label_dict)
-    # return send_file(pdf_file, as_attachment=False, download_name='label.pdf')
-    return render_template("index.html")
 
 
 @app.route("/history", methods=["GET", "POST"])
@@ -100,12 +91,16 @@ def generate_label():
 def history():
     """Show history of printed labels"""
 
+
     user_id = session["user_id"]
+
+    # Retrive information from forms fileds where filter can be applied
     part_number_filter = request.args.get("partNumberFilter", "")
     date_filter = request.args.get("dateFilter", "")
     lot_filter = request.args.get("lotFilter", "")
     location_filter = request.args.get("locationFilter", "")
 
+    # Define the quety to with retriverd information
     query = """
         SELECT u.fname, u.lname, l.part_number, l.revision, l.quantity, l.date, l.lot, l.location, l.time
         FROM label l
@@ -117,8 +112,10 @@ def history():
               location LIKE ?
     """
 
+    # Execute query and assign the query result to labels
     labels = db.execute(query, user_id, f"%{part_number_filter}%", f"%{date_filter}%", f"%{lot_filter}%", f"%{location_filter}%")
 
+    # Return updated history page
     return render_template("history.html", labels=labels)
 
 @app.route("/login", methods=["GET", "POST"])

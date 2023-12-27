@@ -5,11 +5,7 @@ nav .navbar-brand
 }
 
 /* Colors for brand */
-nav .navbar-brand .blue
-{
-    /* color: #537fbe; */
-    color:  #8625FE;
-}
+
 nav .navbar-brand .red
 {
     /* color: #ea433b; */
@@ -30,33 +26,42 @@ nav .navbar-brand .green
     color: #05bbaa;
 }
 
+/* Position the Inventory word */
 .inventory-text {
-    margin-left: 20px; /* Adjust the margin as needed for the desired spacing */
-    margin-right: 10px; /* Adjust the margin as needed for the desired spacing */
-    letter-spacing: 4px; /* Adjust the letter-spacing value as needed for the desired spacing */
+    margin-left: 20px;
+    margin-right: 10px;
+    letter-spacing: 4px;
   }
+
+
+/* Color for nav-bar  */
   .custom-navbar {
-    /* Replace with your desired color */
-    /* background-color: #F6F1FF; */
     background-color: #534293;
 }
 
+/* Color for nab bar links */
     #navbar .nav-link {
     color: #05bbaa;
 }
 
+/* Color for btn */
     .btn-primary {
     color: #ffb20a;
     background-color: #534293;
 }
+
+/* Color for btn hover over */
     .btn-primary:hover {
-    background-color: #05bbaa; /* Change this to your desired hover background color */
-    color: #534293; /* Change this to your desired hover text color */
+    background-color: #05bbaa;
+    color: #534293;
 }
+
+/* Color for headers */
     h2 {
     color:  #534293; /* Change this to your desired text color */
 }
 
+/* color for body */
     body {
         /* background-color: #F1F1F8; */
         background-color: #F3F9FD;
@@ -64,51 +69,23 @@ nav .navbar-brand .green
 
 /* Add some custom styling to set max-height and overflow-y */
 .table-container {
-    max-height: 400px;  /* Set your preferred max height */
-    overflow-y: auto;  /* Add a vertical scrollbar if needed */
-}
-
-.selected {
-    background-color: #ffb20a;/* You can customize the background color */
-    /* #ffb20a; */
-    /* #05bbaa */
-    /* #eb5951 */
+    max-height: 400px;
+    overflow-y: auto;
 }
 
 
+/* Make first - filter row - not movebal in history table */
+#labelTable th {
+    position: sticky;
+    top: 0;
+    background-color: #F3F9FD; /* (was: #f8f9fa)*/
+    z-index: 0; /* Make sure the headers are above other content */
+}
 
-/* _______________________________________________ */
-
-.ui-widget li:nth-child(n+10) {
+/*  limit autocompleat to 15 items */
+.ui-widget li:nth-child(n+15) {
     display: none;
 }
 
 
-.ui-autocomplete {
-    position: absolute;
-    z-index: 99999 !important;
-    cursor: default;
-    padding: 0;
-    margin-top: 2px;
-    list-style: none;
-    background-color: #ffffff;
-    border: 1px solid #ccc -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
-
-.ui-autocomplete>li {
-    padding: 3px 20px;
-}
-
-.ui-autocomplete>li.ui-state-focus {
-    background-color: #DDD;
-}
-
-.ui-helper-hidden-accessible {
-    display: none;
-}
 

@@ -39,7 +39,6 @@
                         <input type="text" name="locationFilter" id="locationFilter">
                     </th>
                     <th>Time</th>
-                    <th>Check</th>
                 </tr>
             </thead>
             <tbody>
@@ -52,9 +51,6 @@
                     <td>{{ label["lot"] }}</td>
                     <td>{{ label["location"] }}</td>
                     <td>{{ label["time"] }}</td>
-                    <td>
-                        <input type="radio" name="selection" id="regenerate_{{ loop.index }}" value="{{ loop.index }}">
-                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
