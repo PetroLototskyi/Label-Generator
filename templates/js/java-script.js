@@ -4,16 +4,16 @@ $(function() {
     // https://api.jqueryui.com/autocomplete/#option-source
 
     // Generate array from Python list of lists
-    // label -> item_pn; value -> location
+    // label -> item_pn; idx -> location
     var item_bin_array = [
         {% for entry in bin_list %}
-        {label:"{{ entry[0] }}", value:"{{ entry[1] }}" },
+        {label:"{{ entry[0] }}", idx:"{{ entry[1] }}" },
         {% endfor %}
     ];
 
     // Autocomplete form with filing out location field
     $( "#part_number" ).autocomplete({
         source: item_bin_array,
-        select: function(event, ui) { $('#location').val(ui.item.value) ; }
+        select: function(event, ui) { $('#location').val(ui.item.idx) ; }
     });
 });
