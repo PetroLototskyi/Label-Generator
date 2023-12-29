@@ -5,26 +5,8 @@
 {% endblock %}
 
 {% block main %}
-<script>
-$(function() {
-
-    // Generate array from pythone list of lists
-    var item_bin_array = [
-        {% for entry in bin_list %}
-        {label:"{{ entry[0] }}", idx:"{{ entry[1] }}" },
-        {% endfor %}
-    ];
-
-    // Autocompleate form with filing out location field
-    $( "#part_number" ).autocomplete({
-        source: item_bin_array,
-        select: function(event, ui) { $('#location').val(ui.item.idx) ; }
-    });
-});
-</script>
 
 <h2>Generate Inventory Label</h2>
-
 
 <div class="container mt-4">
     <form method="POST" action="/generate-label" target="_blank">
